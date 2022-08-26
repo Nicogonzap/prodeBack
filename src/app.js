@@ -3,8 +3,11 @@ const app = express();
 const cookieParser = require('cookie-parser');
 //const methodOverride =  require('method-override'); --> Todavía no lo uso
 const session = require('express-session')
-const port = 3000
+const port = 3001
+
+// Routers
 const mainRouter = require('../src/routes/main.js')
+const adminRouter = require ('../src/routes/admin.js')
 
 //JSON
 app.use(express.json());
@@ -22,4 +25,5 @@ app.use(session({
 }))
 // Main App
 app.listen (port,() => console.log(`Server running in port ${port}`))
-app.use('/', mainRouter)
+app.use('/', mainRouter);
+app.use('/admin', adminRouter);
