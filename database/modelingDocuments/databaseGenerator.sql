@@ -27,12 +27,9 @@ CREATE TABLE teams (
     finalPosition int,
     fifaRank int, 
     groupId int,
-
-    CONSTRAINT FK_groupId_group FOREIGN KEY (groupId)
-        REFERENCES groups (id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
+    foreign key (groupId) references groups (id)
 );
+
 /*Creacion de tabla de equipos*/
 INSERT INTO teams (name, shortName, groupId, fifaRank)
 values
@@ -76,5 +73,3 @@ values
     ("Uruguay", "URU", 8, 13),
     ("Corea del Sur", "COR", 8, 29),
     ("Ghana", "GHA", 8, 60);
-    
-    
