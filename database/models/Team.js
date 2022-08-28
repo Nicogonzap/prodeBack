@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     }
     const Team = sequelize.define(alias, cols, config);
-
+/*     Team.belongsTo (Group, {foreignKey: 'groupId'}) */
     return Team
 
 }

@@ -1,18 +1,20 @@
 const db = require('../../database/models')
+//const dbMgmt = require('../IoC/dbMgmt.js') --> Discontinued for now
 
 
 const mainController = {
     showTeams: function (req, res) {
-        //Call a la BBDD para traer los todos los equipos
-        // Luego distribuirlos en sus grupos y mostrarlos
+        //IoC implementation discontinued -- it was printing undefined in the variable assigned to the result
         db.Teams.findAll()
             .then( function(teams) {
                 return res.json ({
                     count: teams.length,
                     results: Array.from(teams)
                 })
-                //res.send(teams)
             })
+        
+
+
     },
     showGroups: function (req, res) {
         //Call a la BBDD para traer los todos los equipos
