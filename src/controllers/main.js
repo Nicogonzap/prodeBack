@@ -1,5 +1,5 @@
 const db = require('../../database/models')
-//const dbMgmt = require('../IoC/dbMgmt.js') --> Discontinued for now
+//const dbMgmt = require('../IoC/dbMgmt.js') //--> Discontinued for now
 
 
 const mainController = {
@@ -12,10 +12,14 @@ const mainController = {
                     results: Array.from(teams)
                 })
             })
-        
 
 
     },
+/*     showTeamsv2: async function (req, res) {
+        
+        const result = await dbMgmt.findAll(db.Teams)
+        await res.send(result)
+    }, */
     showGroups: function (req, res) {
         //Call a la BBDD para traer los todos los equipos
         // Luego distribuirlos en sus grupos y mostrarlos

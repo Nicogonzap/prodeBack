@@ -178,10 +178,11 @@ values
 
 CREATE TABLE users (
     id int NOT NULL PRIMARY key AUTO_INCREMENT,
-    userTypeId int,
-    userName varchar(255),
-    email varchar(255),
-    pass varchar(255),
+    userTypeId int NOT NULL,
+    userName varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    pass varchar(255) NOT NULL,
+    active int NOT NULL,
     foreign key (userTypeId) references userTypes (id)
     );
 INSERT INTO users ( userTypeId, userName, email, pass )

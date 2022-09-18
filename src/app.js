@@ -28,4 +28,4 @@ app.use(session({
 app.listen (port,() => console.log(`Server running in port ${port}`))
 app.use('/', mainRouter);
 app.use('/admin', adminRouter);
-app.use('/user', userRouter);
+app.use('/users', userRouter);
