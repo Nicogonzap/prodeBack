@@ -17,15 +17,16 @@ const userController = {
             pass: req.body.pass,
             active: 1
         }
-        const userExists = await this.userExists(usertoCreate)
-        if (userExists) {
+        
+        const existantUser = await userController.userExists(userToCreate) //Check why this.userExists was not created
+        if (existantUser) {
             //Include error for user already existing
-            res.send('el usuario ya existe')
+            return ({ error: "El usuario ya fue creado" }) //Returns error message to display in front
         } else {
             const userCreated = await db.Users.create(userToCreate)
             // Overwrite password in response user to avoid security issues
             userCreated.pass = 'Nothing to see here friend';
-            return userCreated;
+            return {...userCreated, error:null};
         }
     },
     login: async function (req, res) {
@@ -35,7 +36,11 @@ const userController = {
         }
         const userExists = await this.userExists(userToLog)
         if (userExists) {
-
+            //login the user
+            req.session.userLoged = usuario
+            if (req.body.recordarme != undefined) {
+                res.cookie('recordarme',usuario.email,{maxAge:1000*60*5})//(1000*60 = 1 min) --> Mover a infinito
+            }
         }
 
     }
